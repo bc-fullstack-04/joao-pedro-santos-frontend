@@ -25,8 +25,9 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
     if(data.id) {
       setIsAuthenticated(true);
       setUserData(data);
+    }else{
+      Logout();
     }
-    Logout();
   }, []);
 
   const Login = useCallback(async (email: string, password: string) => {

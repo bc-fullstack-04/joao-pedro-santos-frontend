@@ -15,7 +15,7 @@ export function Signup() {
   async function handleRegister(event: FormEvent) {
     event.preventDefault();
 
-    register(email, name, password)
+    register(email, password, name)
       .then(() => { 
         toast.success("Cadastro efetuado com sucesso!");
         setTimeout(() => {
@@ -29,7 +29,7 @@ export function Signup() {
 
   return (
     <>
-      {isAuthenticated && <Navigate to='/page1'/>}
+      {isAuthenticated && <Navigate to='/'/>}
       <div className="bg-fundo bg-cover bg-no-repeat h-screen">
         <div className='flex items-center justify-center h-screen backdrop-blur-sm backdrop-brightness-50'>
           {/* Container */}
@@ -39,9 +39,9 @@ export function Signup() {
               <h1 className="text-xl font-semibold">Acesse sua conta</h1>
               {/* Form */}
               <form onSubmit={handleRegister} className="flex flex-col w-72">
-                <Input2 onChange={e => setName(e.target.value)} type='text'>Nome completo:</Input2>
-                <Input2 onChange={e => setEmail(e.target.value)} type='email'>Email:</Input2>
-                <Input2 onChange={e => setPassword(e.target.value)} type='password'>Senha:</Input2>
+                <Input2 id='name' onChange={e => setName(e.target.value)} type='text'>Nome completo:</Input2>
+                <Input2 id='email' onChange={e => setEmail(e.target.value)} type='email'>Email:</Input2>
+                <Input2 id='password' onChange={e => setPassword(e.target.value)} type='password'>Senha:</Input2>
                 <button type='submit' className='p-3 rounded-3xl bg-zinc-900 text-white hover:bg-zinc-900/90 transition mb-3'>Entrar</button>
               </form>
               <p className='text-xs font-light'>Já tem uma conta? <a className='font-semibold underline' href="/login">Entrar</a></p>
