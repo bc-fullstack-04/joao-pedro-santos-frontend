@@ -56,7 +56,7 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
   }, []);
 
   const Register = useCallback( async(email:string, password: string, name: string) => {
-    const resp = await userApi.post('/user/create', {email, name, password});
+    const resp = await userApi.post('/users/create', {email, name, password});
     if(resp instanceof Error) {
       return resp.message;
     }
