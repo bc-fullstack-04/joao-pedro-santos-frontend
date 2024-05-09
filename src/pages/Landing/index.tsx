@@ -1,43 +1,25 @@
-import { AlbumModel } from '@/models/AlbumModel';
-import { albumApi } from '@/services/apiService';
-import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
 
 export default function Landing() {
-  const [albums, setAlbums] = useState<AlbumModel[]>([]);
-
-  useEffect(() => {
-    albumApi.defaults.headers.common.Authorization =
-      'Basic bWFpbEBtYWlsLmNvbTokMmEkMTAkR2htdG91L3d1WkY5L0wwWHdqQ0pPT2hDRVJ4MUNIZFhuZW9HTk5HT0pDZmNITDgweUpiT3U';
-    albumApi.get('/albums/all?search=Rock').then((response) => {
-      setAlbums(response.data);
-      console.log(response.data);
-    });
-  }, []);
-
-  function handleLink(url: string): undefined {
-    window.open(url, '_blank');
-  }
-
   return (
-    <main className="flex flex-col items-center justify-center h-full mt-10 gap-4">
-      <h1 className="text-2xl font-semibold">Albums</h1>
-
-      <section className="flex flex-wrap gap-4 justify-center h-full m-2">
-        {/* Card */}
-        {albums?.map((album, i) => (
-          <div
-            style={{ '--bg-card': `url(${album.images[0].url})` } as React.CSSProperties}
-            className="bg-[image:var(--bg-card)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md"
-          >
-            <div
-              onClick={() => handleLink(album.externalUrl.externalUrls.spotify)}
-              className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer"
-            >
-              <h1 className="text-2xl font-semibold text-white text-center">{album.name}</h1>
-            </div>
-          </div>
-        ))}
-        {/* Card */}
+    <main className="flex flex-col bg-fundo bg-cover bg-no-repeat h-screen">
+      <header className='flex justify-between py-3 px-16 backdrop-blur-xl backdrop-contrast-50 flex-wrap max-sm:p-1 max-sm:gap-4 max-sm:justify-center max-sm:items-center'>
+        <div className='flex items-center justify-center gap-2'>
+          <img src={logo}  />
+          <span className='text-white'>BootPlay</span>
+        </div>
+        <div className='flex items-center gap-3 '>
+          <Link to={'/login'}><button className='bg-black text-white h-10 px-14 font-semibold rounded-3xl max-sm:px-8'>Entrar</button></Link>
+          <Link to={'/signup'}><button className='bg-[#9EE2FF] text-black h-10 px-14 font-semibold rounded-3xl max-sm:px-8'>Inscrever-se</button></Link>
+        </div>
+      </header>
+      <section className='flex items-center px-40 h-full backdrop-brightness-50 max-lg:px-4 max-sm:p-2 max-sm:justify-center max-sm:w-auto'>
+        <div className='flex flex-col flex-wrap gap-8 max-lg:text-center'>
+          <h1 className='text-white text-4xl md:text-5xl lg:text-6xl font-semibold lg:w-[701px]'>A história da música não pode ser esquecida!</h1>
+          <p className='text-white lg:w-[400px]'>Crie já sua conta e curta os sucessos que marcaram os tempos no Vinil.</p>
+          <Link to={'/signup'}><button className='bg-[#9EE2FF] text-black h-12 px-14 font-semibold rounded-3xl'>Inscrever-se</button></Link>
+        </div>
       </section>
     </main>
   );
