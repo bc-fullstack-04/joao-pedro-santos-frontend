@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Poppins;
+  line-height: 1.5;
+
+  margin: 0 auto;
+  border: 0;
+  padding: 0;
+
+  background-color: #f3f3f8;
+
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
