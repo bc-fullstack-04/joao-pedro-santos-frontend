@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import { PrivateRoutes } from './utils/PrivateRoutes';
 import { Signup } from './pages/Signup';
 import Landing from './pages/Landing';
+import {Dashboard} from './pages/Dashboard';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/signup' element={<Signup />} />
 
           <Route path='' element={<PrivateRoutes/>}>
+            <Route path='/dashboard' element={<Dashboard />} />
           </Route>            
 
         </Routes>

@@ -18,7 +18,9 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'fundo': 'url("src/assets/init_background.jpeg")',
+        fundo: 'url("src/assets/init_background.jpeg")',
+        coqueiro:
+          'url("src/assets/coqueiro.jpeg")',
       },
       colors: {
         border: 'hsl(var(--border))',

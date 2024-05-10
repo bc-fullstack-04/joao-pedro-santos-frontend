@@ -44,6 +44,7 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
     }
 
     localStorage.setItem('@Auth.Data', JSON.stringify(respUserInfo.data));
+    localStorage.setItem('@Auth.Token', JSON.stringify(respAuth.data.token));
     setIsAuthenticated(true);
     setUserData(respUserInfo.data);
   }, []);
@@ -51,6 +52,7 @@ export const AuthProvider: React.FC<Props> = ({children}) => {
   
   const Logout = useCallback(() => {
     localStorage.removeItem('@Auth.Data');
+    localStorage.removeItem('@Auth.Token');
     setUserData(undefined);
     setIsAuthenticated(false);
     return <Navigate to='/'/>
