@@ -29,7 +29,7 @@ export function Signup() {
 
   return (
     <>
-      {isAuthenticated && <Navigate to='/'/>}
+      {isAuthenticated && <Navigate to='/dashboard'/>}
       <div className="bg-fundo bg-cover bg-no-repeat h-screen">
         <div className='flex items-center justify-center h-screen backdrop-blur-sm backdrop-brightness-50'>
           {/* Container */}
