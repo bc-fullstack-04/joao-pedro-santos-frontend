@@ -87,84 +87,44 @@ export function Dashboard() {
           </div>
 
           <div className="flex items-center justify-center overflow-hidden mb-8">
-            {isSearched ? 
-              <div className="flex flex-wrap justify-center items-center gap-12 px-4 sm:px-6 md:px-10 lg:px-20">
-                {albums.map((album, i) =>(
-                  <div className="bg-[#19181F]">
-                    <Dialog>
-                      <DialogTrigger className="rounded-md">
-                        <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md hover:scale-110 transition">
-                          <div className="flex h-full justify-center items-center mb-4 backdrop-brightness-50 p-6 cursor-pointer  hover:scale-105 transition">
-                            <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
-                          </div>
+            <div className={`${isSearched ? 'flex flex-wrap justify-center items-center gap-12 px-4 sm:px-6 md:px-10 lg:px-20' : 'carousel-home relative left-0 flex items-center'}`}>
+              {albums.map((album, i) =>(
+                <div className={`${isSearched ? '': 'pr-8'} bg-[#19181F]`}>
+                  <Dialog>
+                    <DialogTrigger className="rounded-md">
+                      <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md hover:scale-110 transition">
+                        <div className={`flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer hover:scale-105 transition ${isSearched ? 'mb-4' : ''}`}>
+                          <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
                         </div>
-                        </DialogTrigger>
-                      <DialogContent className="flex gap-0 bg-white p-0 h-[30%] rounded-md">
-                        <img className="rounded-tl-md" src={album.images[0].url} />
-            
-                        <div className="flex flex-col flex-grow px-2 sm:px-4 justify-between mt-10 mb-6 items-center">
-                          <div className="flex flex-col gap-2 mb-3 w-full">
-                            <h2 className="text-center text-sm font-semibold">{album.name}</h2>
-                            <p className="w-full text-sm px-2 sm:px-8">R$ {album.value.toString().replace('.', ',')}</p>
-                            <p className="w-full text-sm px-2 sm:px-8">{album.artists[0].name}</p>
-                          </div>
-                          <DialogClose className="p-0 m-0 w-full">
-                            <button onClick={(e) => handleSale({
-                              artistName: album.artists[0].name,
-                              idSpotify: album.id,
-                              imageUrl: album.images[0].url,
-                              name: album.name,
-                              value: album.value
-                              })}  className="bg-[#FBBC05] h-10 w-[90%] rounded-3xl text-white hover:scale-110 transition" >
-                              Comprar
-                            </button>
-                          </DialogClose>
+                      </div>
+                      </DialogTrigger>
+                    <DialogContent className="flex gap-0 bg-white p-0 h-[30%] rounded-md">
+                      <img className="rounded-tl-md" src={album.images[0].url} />
+          
+                      <div className="flex flex-col flex-grow px-2 sm:px-4 justify-between mt-10 mb-6 items-center">
+                        <div className="flex flex-col gap-2 mb-3 w-full">
+                          <h2 className="text-center text-sm font-semibold">{album.name}</h2>
+                          <p className="w-full text-sm px-2 sm:px-8">R$ {album.value.toString().replace('.', ',')}</p>
+                          <p className="w-full text-sm px-2 sm:px-8">{album.artists[0].name}</p>
                         </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-                ))}
-              </div>
-             :
-              <div className="carousel-home relative left-0 flex items-center">
-                {albums.map((album, i) =>(
-                  <div className="pr-8 bg-[#19181F]">
-                    <Dialog>
-                      <DialogTrigger className="rounded-md">
-                        <div key={i} style={{'--bg-fundo': `url(${album.images[0].url})`} as React.CSSProperties} className="bg-[image:var(--bg-fundo)] bg-cover bg-no-repeat w-60 h-[245px] rounded-md hover:scale-110 transition">
-                          <div className="flex h-full justify-center items-center backdrop-brightness-50 p-6 cursor-pointer  hover:scale-105 transition">
-                            <h1 className="text-2xl font-semibold text-center text-white">{album.name}</h1>
-                          </div>
-                        </div>
-                        </DialogTrigger>
-                      <DialogContent className="flex gap-0 bg-white p-0 h-[30%] rounded-md">
-                        <img className="rounded-tl-md" src={album.images[0].url} />
-            
-                        <div className="flex flex-col flex-grow px-2 sm:px-4 justify-between mt-10 mb-6 items-center">
-                          <div className="flex flex-col gap-2 mb-3 w-full">
-                            <h2 className="text-center text-sm font-semibold">{album.name}</h2>
-                            <p className="w-full text-sm px-2 sm:px-8">R$ {album.value.toString().replace('.', ',')}</p>
-                            <p className="w-full text-sm px-2 sm:px-8">{album.artists[0].name}</p>
-                          </div>
-                          <DialogClose className="p-0 m-0 w-full">
-                            <button onClick={(e) => handleSale({
-                              artistName: album.artists[0].name,
-                              idSpotify: album.id,
-                              imageUrl: album.images[0].url,
-                              name: album.name,
-                              value: album.value
-                              })}  className="bg-[#FBBC05] h-10 w-[90%] rounded-3xl text-white hover:scale-110 transition" >
-                              Comprar
-                            </button>
-                          </DialogClose>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-                ))}
-              </div>
-            }
-          </div >
+                        <DialogClose className="p-0 m-0 w-full">
+                          <button onClick={(e) => handleSale({
+                            artistName: album.artists[0].name,
+                            idSpotify: album.id,
+                            imageUrl: album.images[0].url,
+                            name: album.name,
+                            value: album.value
+                            })}  className="bg-[#FBBC05] h-10 w-[90%] rounded-3xl text-white hover:scale-110 transition" >
+                            Comprar
+                          </button>
+                        </DialogClose>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </main>
   )
