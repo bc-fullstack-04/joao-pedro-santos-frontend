@@ -40,7 +40,7 @@ export default function Collection() {
           </div>
         </div>
         <div className="flex items-center justify-center overflow-hidden mb-8 bg-[#19181F]">
-            <div className={`flex flex-wrap justify-center items-center gap-12 sm:px-12`}>
+            <div className={`flex flex-wrap justify-center items-center gap-12 ${albums.length > 5 ? 'sm:px-12' : 'sm:px-20'}`}>
               {albums.map((album, i) =>(
                   <Dialog>
                     <DialogTrigger className="rounded-md">

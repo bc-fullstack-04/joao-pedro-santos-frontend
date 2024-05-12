@@ -42,7 +42,7 @@ export function Signup() {
                 <Input2 id='name' onChange={e => setName(e.target.value)} type='text'>Nome completo:</Input2>
                 <Input2 id='email' onChange={e => setEmail(e.target.value)} type='email'>Email:</Input2>
                 <Input2 id='password' onChange={e => setPassword(e.target.value)} type='password'>Senha:</Input2>
-                <button type='submit' className='p-3 rounded-3xl bg-zinc-900 text-white hover:bg-zinc-900/90 transition mb-3'>Entrar</button>
+                <button type='submit' className='p-3 rounded-3xl bg-zinc-900 text-white hover:bg-zinc-900/90 transition mb-3'>Criar conta</button>
               </form>
               <p className='text-xs font-light'>Já tem uma conta? <a className='font-semibold underline' href="/login">Entrar</a></p>
               {/* Form */}
