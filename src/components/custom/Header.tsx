@@ -15,8 +15,8 @@ export default function Header() {
         <div className='flex items-center gap-3 '>
           {isAuthenticated ? 
             <div className='flex items-center justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-16'>
-              <Link className='flex items-center justify-center text-white text-center h-10 font-semibold rounded-3xl' to={'/login'}>Meus Discos</Link>
-              <Link className='flex items-center justify-center text-white h-10 font-semibold rounded-3xl' to={'/signup'}>Carteira</Link>
+              <Link className='flex items-center justify-center text-white text-center h-10 font-semibold rounded-3xl' to={'/collection'}>Meus Discos</Link>
+              <Link className='flex items-center justify-center text-white h-10 font-semibold rounded-3xl' to={'/wallet'}>Carteira</Link>
               <Link to={'/dashboard'}><img src={icon}  /></Link>
             </div>
           : 
