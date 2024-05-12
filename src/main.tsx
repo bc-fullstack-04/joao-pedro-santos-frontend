@@ -9,6 +9,7 @@ import { PrivateRoutes } from './utils/PrivateRoutes';
 import { Signup } from './pages/Signup';
 import Landing from './pages/Landing';
 import {Dashboard} from './pages/Dashboard';
+import Collection from './pages/Collection';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/signup' element={<Signup />} />
 
           <Route path='' element={<PrivateRoutes/>}>
+            <Route path='/collection' element={<Collection />} />
             <Route path='/dashboard' element={<Dashboard />} />
           </Route>            
 

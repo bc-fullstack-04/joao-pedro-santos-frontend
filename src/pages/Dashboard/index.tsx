@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import toast from "react-hot-toast";
 
-type AlbumSale = {
+export type AlbumSale = {
   name: string,
   idSpotify: string,
   artistName: string,
