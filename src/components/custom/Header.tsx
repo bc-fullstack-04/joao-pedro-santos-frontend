@@ -17,7 +17,9 @@ export default function Header() {
   return (
     <header className='flex justify-between py-3 px-16 backdrop-blur-xl backdrop-contrast-50 flex-wrap max-sm:p-1 max-sm:gap-4 max-sm:justify-center max-sm:items-center'>
         <div className='flex items-center justify-center gap-2'>
-          <img src={logo}  />
+          <Link to={'/'}>
+            <img src={logo}  />
+          </Link>
           <span className='text-white'>BootPlay</span>
         </div>
         <div className='flex items-center gap-3 '>
