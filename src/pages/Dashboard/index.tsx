@@ -29,7 +29,7 @@ export function Dashboard() {
   const Authorization = `Basic ${localStorage.getItem('@Auth.Token')}`.replace(/"/g, '');
 
   useEffect(() => {  
-    albumApi.get('/albums/all?search=Rock', {headers: { Authorization }})
+    albumApi.get('/albums/all?searchText=Rock', {headers: { Authorization }})
     .then((resp) => {
       setAlbums(resp.data);
       setIsSearched(false);
@@ -40,7 +40,7 @@ export function Dashboard() {
     event.preventDefault();
 
     if(search.trim().length > 0){
-      albumApi.get(`/albums/all?search=${search}`, { headers: { Authorization } })
+      albumApi.get(`/albums/all?searchText=${search}`, { headers: { Authorization } })
       .then((resp) => {
         setAlbums(resp.data);
         setIsSearched(true);
@@ -52,12 +52,21 @@ export function Dashboard() {
     const userData = (localStorage.getItem('@Auth.Data'));
     const { id, name, email } = (JSON.parse(userData || ""));
     const users = {id, name, email};
-    albumApi.post('/albums/sale', { ...sale, users }, { headers: { Authorization } })
-    .then(resp =>  {
-      toast.success('Album comprado com sucesso!');
-    })
-    .catch(err => {
-      toast.error('Album já está adquirido!');
+
+    albumApi.get('/albums/my-collection', { headers: { Authorization } })
+    .then((resp) => {
+      const cont = resp.data.filter((album: AlbumSale) => album.idSpotify == sale.idSpotify);
+      if(cont.length > 0){
+        toast.error('Album já está adquirido!');
+      }else{
+        albumApi.post('/albums/sale', { ...sale, users }, { headers: { Authorization } })
+      .then(resp =>  {
+        toast.success('Album comprado com sucesso!');
+      })
+      .catch(err => {
+        toast.error('Album já está adquirido!');
+      });
+      }
     });
   }
 
