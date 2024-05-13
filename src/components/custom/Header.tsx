@@ -26,7 +26,7 @@ export default function Header() {
           {isAuthenticated ? 
             <div className='flex items-center justify-center gap-4 sm:gap-6 md:gap-10 lg:gap-16'>
               <Link className='flex items-center justify-center text-white text-center h-10 font-semibold rounded-3xl' to={'/collection'}>Meus Discos</Link>
-              <Link className='flex items-center justify-center text-white h-10 font-semibold rounded-3xl' to={'/wallet'}>Carteira</Link>
+              <Link className='flex items-center justify-center text-white h-10 font-semibold rounded-3xl' to={'/dashboard'}>Carteira</Link>
               <DropdownMenu>
                 <DropdownMenuTrigger><img src={icon}  /></DropdownMenuTrigger>
                 <DropdownMenuContent className='bg-[#19181F] text-white'>

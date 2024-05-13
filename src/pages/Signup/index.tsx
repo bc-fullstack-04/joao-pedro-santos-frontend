@@ -36,7 +36,7 @@ export function Signup() {
           <div className="flex max-w-[544px] bg-white p-10 rounded-md">
             <div className="flex flex-col items-center w-full gap-2">
               <img className="h-12" src={logo} />
-              <h1 className="text-xl font-semibold">Acesse sua conta</h1>
+              <h1 className="text-xl font-semibold">Criar conta</h1>
               {/* Form */}
               <form onSubmit={handleRegister} className="flex flex-col w-72">
                 <Input2 id='name' onChange={e => setName(e.target.value)} type='text'>Nome completo:</Input2>
