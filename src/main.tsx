@@ -10,6 +10,7 @@ import { Signup } from './pages/Signup';
 import Landing from './pages/Landing';
 import {Dashboard} from './pages/Dashboard';
 import Collection from './pages/Collection';
+import { NotFound } from './pages/404';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.Fragment>
@@ -18,6 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path='*' element={<NotFound/>}/>
+
           <Route path='/' element={<Landing/>}/>
 
           <Route path='/login' element={<Login/>}/>
